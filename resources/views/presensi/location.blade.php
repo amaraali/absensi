@@ -7,6 +7,12 @@
         <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
             {{ __("Update your account's profile location.") }}
         </p>
+
+        <div class="row mt-2">
+            <div class="col-12">
+                @include('include.flash')
+            </div>
+        </div>
         @php
             // get acrbon today date
             $today = \Carbon\Carbon::today();

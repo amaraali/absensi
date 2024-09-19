@@ -14,15 +14,15 @@ return new class extends Migration
         Schema::create('presensi', function (Blueprint $table) {
             $table->uuid('id')->primary;
             $table->string('user_id');
-            $table->string('tanggal');
-            $table->string('jam_masuk');
-            $table->string('jam_keluar');
+            $table->date('tanggal');
+            $table->dateTime('jam_masuk');
+            $table->dateTime('jam_keluar')->nullable();
             $table->string('lokasi');
-            $table->string('keterangan');
-            $table->string('status');
+            $table->string('keterangan')->nullable();
+            $table->string('status')->nullable();
             $table->string('created_by');
-            $table->string('updated_by');
-            $table->string('deleted_by');
+            $table->string('updated_by')->nullable();
+            $table->string('deleted_by')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
