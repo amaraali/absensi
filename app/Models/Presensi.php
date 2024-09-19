@@ -10,6 +10,18 @@ class Presensi extends Model
 {
     use HasFactory, HasUuids;
     protected $table = 'presensi';
+    protected $fillable = [
+        'user_id',
+        'tanggal',
+        'jam_masuk',
+        'jam_keluar',
+        'lokasi',
+        'keterangan',
+        'status',
+        'created_by',
+        'updated_by',
+        'deleted_by',
+    ];
 
     public function user()
     {

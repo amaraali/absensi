@@ -22,6 +22,7 @@
                 Anda belum melakukan presensi keluar hari ini.
             </div>
         @endif
+        {{-- <button class="btn btn-outline-secondary" onclick="getLocation()">Cek Lokasi</button> --}}
     </header>
 
     <!-- Display the location information in this paragraph -->
@@ -45,6 +46,8 @@
 
         <div class="flex items-center gap-4">
             <x-primary-button style="display: none;">{{ __('Submit') }}</x-primary-button>
+            {{-- <button class="btn btn-outline-primary" type="submit">Submit</button> --}}
+            {{-- <button class="btn btn-outline-secondary" onclick="getLocation()">Cek Lokasi</button> --}}
             <x-secondary-button onclick="getLocation()">Cek Lokasi</x-secondary-button>
         </div>
     </form>
