@@ -24,14 +24,20 @@ class PresensiController extends Controller
             'longitude' => 'required',
         ]);
 
-        $presensi = new Presensi();
-        $presensi->user_id = $id;
-        $presensi->tanggal = today();
-        $presensi->jam_masuk = now();
-        $presensi->lokasi = $request->latitude . ',' . $request->longitude;
-        $presensi->created_by = Auth::id();
-        $presensi->save();
+        $presensi = Presensi::firstOrNew(['user_id' => $id, 'tanggal' => today()]);
+        if ($presensi->exists) {
+            $presensi->jam_keluar = now();
+            $presensi->updated_by = Auth::id();
+            $presensi->save();
+        } else {
+            $presensi->user_id = $id;
+            $presensi->tanggal = today();
+            $presensi->jam_masuk = now();
+            $presensi->lokasi = $request->latitude . ',' . $request->longitude;
+            $presensi->created_by = Auth::id();
+            $presensi->save();
+        }
 
-        return redirect()->route('presensi.index');
+        return redirect()->route('presensi.index')->with('message_success', 'Presensi berhasil ditambahkan!');
     }
 }
